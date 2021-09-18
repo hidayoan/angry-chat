@@ -1,0 +1,12 @@
+@import "../../../asset/scss/all.scss";
+
+.chat-feature {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: left;
+
+	background-color: $dark-color-4;
+
+	padding: 0 !important;
+}

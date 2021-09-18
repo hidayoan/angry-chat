@@ -1,0 +1,162 @@
+@import "./asset/scss/all.scss";
+@import url("https://fonts.googleapis.com/css2?family=Staatliches&display=swap");
+
+.app {
+	height: 100vh;
+	text-align: center;
+	color: $light-color-1;
+	background-color: $dark-color-2;
+}
+
+.layout {
+	height: 100vh;
+	display: contents !important;
+}
+
+/* Base */
+*,
+::before,
+::after {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+
+	@include largeDesktop {
+		font-size: 20px !important;
+	}
+	@include smallDesktop {
+		font-size: 16px !important;
+	}
+	@include tabletAndDesktop {
+		font-size: 13px !important;
+	}
+	@include tablet {
+		font-size: 20px !important;
+	}
+	@include mobile {
+		font-size: 16px !important;
+	}
+}
+
+body {
+	font-family: "Staatliches", cursive;
+	font-size: $normal-font-size;
+	font-weight: $font-medium;
+	background-color: $dark-color-2;
+	color: $light-color-1;
+	line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+ul,
+p {
+	margin: 0;
+}
+
+h2,
+h3 {
+	font-weight: $font-semi-bold;
+}
+
+ul {
+	padding: 0;
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: $light-color-1;
+}
+
+img {
+	max-height: 100%;
+	height: auto;
+}
+
+section {
+	background-color: transparent !important;
+}
+
+button {
+	outline: none;
+	border: none;
+	background-color: transparent;
+}
+input[type="text"],
+input[type="number"],
+textarea {
+	font-size: 16px !important;
+}
+//mobile
+
+.body {
+	@include mobile {
+		$biggest-font-size: 4.5rem;
+		$h1-font-size: 2.25rem;
+		$h2-font-size: 1.5rem;
+		$h3-font-size: 1.25rem;
+		$normal-font-size: 1rem;
+		$small-font-size: 0.875rem;
+		$smaller-font-size: 0.813rem;
+	}
+
+	@include tablet {
+		$biggest-font-size: 4.5rem;
+		$h1-font-size: 2.25rem;
+		$h2-font-size: 1.5rem;
+		$h3-font-size: 1.25rem;
+		$normal-font-size: 1rem;
+		$small-font-size: 0.875rem;
+		$smaller-font-size: 0.813rem;
+	}
+
+	@include tabletAndDesktop {
+		$biggest-font-size: 4.5rem;
+		$h1-font-size: 2.25rem;
+		$h2-font-size: 1.5rem;
+		$h3-font-size: 1.25rem;
+		$normal-font-size: 1rem;
+		$small-font-size: 0.875rem;
+		$smaller-font-size: 0.813rem;
+	}
+}
+
+.overlays {
+	top: 0;
+	left: 0;
+	z-index: 1;
+	position: absolute;
+	background-color: rgb(18 18 18 / 50%);
+	width: 100vw;
+	height: 100vh;
+	display: none;
+
+	&.show {
+		display: inline-block;
+	}
+}
+
+.backtop {
+	font-size: 2em;
+	//padding: 2rem;
+	background-color: white;
+	width: 2.5rem;
+	height: 2.5rem;
+	@include boxShadow;
+	//  color: $primary-text-color;
+
+	// @include animated-btn(
+	// 	$third-button-color,
+	// 	$primary-text-color,
+	// 	$third-button-color,
+	// 	50%,
+	// 	y
+	// );
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

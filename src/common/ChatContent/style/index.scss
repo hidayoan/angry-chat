@@ -1,0 +1,189 @@
+@import "../../../asset/scss/all.scss";
+
+.chat-content {
+	height: 100%;
+	transition: all 0.5s;
+	display: flex;
+	flex-flow: column;
+	width: 75%;
+
+	@include tabletAndDesktop {
+		width: 65%;
+	}
+
+	@include tablet {
+		width: 100%;
+	}
+
+	@include mobile {
+		width: 100%;
+	}
+
+	&.open {
+		width: 55%;
+		@include tabletAndDesktop {
+			width: 65%;
+		}
+
+		@include tablet {
+			width: 100%;
+		}
+
+		@include mobile {
+			width: 100%;
+		}
+	}
+
+	&__header {
+		z-index: 1;
+		position: fixed;
+		top: 0;
+		min-height: 50px;
+		max-height: 50px;
+		height: 50px;
+		margin: 15px 10px;
+		padding: 0.5rem 1rem;
+		border-radius: 10px;
+
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		background-color: $dark-color-5;
+
+		transition: all 0.5s;
+		width: calc(75% - 20px);
+
+		@include tabletAndDesktop {
+			width: calc(65% - 20px);
+		}
+
+		@include tablet {
+			width: calc(100% - 20px);
+		}
+
+		@include mobile {
+			width: calc(100% - 20px);
+		}
+
+		&.open {
+			width: calc(55% - 20px);
+
+			@include tabletAndDesktop {
+				width: calc(65% - 20px);
+			}
+
+			@include tablet {
+				width: calc(100% - 20px);
+			}
+
+			@include mobile {
+				width: calc(100% - 20px);
+			}
+		}
+
+		&-user {
+			display: flex;
+			align-items: center;
+			justify-content: left;
+
+			&__back {
+				width: 2rem;
+				margin-right: 10px;
+			}
+
+			&__photo {
+				width: 2rem;
+				margin-right: 5px;
+
+				@include tablet {
+					width: 1.5rem;
+				}
+
+				& > img {
+					padding: 10%;
+					width: 100%;
+					border-radius: 50px;
+				}
+			}
+
+			&__name {
+				font-size: 1.25rem;
+
+				@include tablet {
+					font-size: 1rem;
+				}
+
+				@include mobile {
+					font-size: 1rem;
+				}
+			}
+		}
+
+		&-group-button {
+			width: 20%;
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+
+			&__icon {
+				font-size: 0.8rem;
+				cursor: pointer;
+				background-color: $dark-color-3;
+
+				height: 2rem;
+				width: 2rem;
+				justify-content: center;
+				align-items: center;
+				border-radius: 100%;
+				text-align: center;
+				display: flex;
+				transition: 0.5s;
+
+				// @include tablet {
+				// 	height: 1rem;
+				// 	width: 1rem;
+				// }
+
+				// @include mobile {
+				// 	height: 1rem;
+				// 	width: 1rem;
+				// }
+
+				&:hover {
+					border-radius: 5px;
+					background-color: $primary-color-1;
+				}
+			}
+		}
+	}
+
+	&__body {
+		flex: 1 1 90%;
+		display: flex;
+		flex-direction: column;
+		overflow: auto;
+
+		padding: 1rem;
+		margin: 50px 10px 0;
+		width: calc(100% - 20px);
+		// height: 80vh;
+		border-radius: 20px;
+
+		// min-height: 80vh;
+
+		transition: all 0.5s;
+
+		overflow-y: scroll;
+		&::-webkit-scrollbar {
+			display: none;
+		}
+	}
+
+	&__footer {
+		flex: 0 0 10%;
+		width: calc(100%);
+
+		transition: all 0.5s;
+	}
+}

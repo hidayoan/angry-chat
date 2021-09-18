@@ -1,0 +1,64 @@
+@import "../../../asset/scss/all.scss";
+
+.form {
+	text-align: left;
+
+	&__label {
+		color: $light-color-2;
+		padding-bottom: 5px;
+		margin-top: 1.5rem;
+	}
+
+	&__input {
+		padding: 7px !important;
+		width: 100%;
+		background-color: $dark-color-1 !important;
+		border-radius: 3px !important;
+		border: black solid 1px !important;
+		color: $light-color-1 !important;
+
+		&:focus {
+			outline: none !important;
+			border: $primary-color-1 solid 1px !important;
+			color: $light-color-1 !important;
+		}
+
+		& > .ant-picker-input > input {
+			color: $light-color-1 !important;
+		}
+
+		& > input {
+			background-color: $dark-color-1 !important;
+			color: $light-color-1 !important;
+		}
+	}
+
+	&__forgot {
+		color: $primary-color-1;
+		cursor: pointer;
+
+		&:hover {
+			color: $primary-color-2;
+		}
+	}
+
+	&__button {
+		padding: 7px;
+		width: 100%;
+		color: $light-color-1 !important;
+		background-color: $primary-color-2 !important;
+		min-height: 42px !important;
+		font-size: 1rem !important;
+		border: none !important;
+		border-radius: 3px !important;
+		margin-top: 2rem !important;
+
+		&:hover {
+			background-color: $primary-color-3 !important;
+		}
+	}
+}
+
+.ant-form-item {
+	margin: 0 !important;
+}

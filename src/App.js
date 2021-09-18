@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { Redirect, Route, Switch } from "react-router";
+import "./App.scss";
+import AuthFeature from "./feauture/AuthFeature";
+import ChatFeature from "./feauture/ChatFeature";
+import { auth } from "./firebaseConfig/firebase";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+	const [user] = useAuthState(auth);
+	console.log(user);
+	return (
+		<div className="app">
+			<Switch>
+				{!!user ? (
+					<>
+						<Redirect from="/auth" to="/chat"></Redirect>
+						<Route path="/chat">
+							<ChatFeature />
+						</Route>
+					</>
+				) : (
+					<>
+						<Redirect from="/chat" to="/auth"></Redirect>
+						<Route path="/auth">
+							<AuthFeature />
+						</Route>
+					</>
+				)}
+			</Switch>
+		</div>
+	);
+};
 
 export default App;

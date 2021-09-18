@@ -1,0 +1,144 @@
+@import "../../../asset/scss/all.scss";
+
+.chat-bar {
+	display: flex;
+	flex-direction: column;
+	width: 20%;
+	height: 100vh;
+	background-color: $dark-color-5;
+
+	@include tabletAndDesktop {
+		width: 30%;
+	}
+
+	@include tablet {
+		width: 90%;
+	}
+
+	@include mobile {
+		width: 85%;
+	}
+
+	&__search {
+		border-bottom: 1px solid $light-color-3;
+		width: 90%;
+		margin: 1rem auto 0;
+		padding-bottom: 1rem;
+
+		& > input {
+			background-color: $dark-color-4;
+			border: none;
+			color: $light-color-2;
+			border-radius: 5px;
+		}
+	}
+
+	&__list {
+		// overflow-y: scroll;
+		// min-height: ;
+	}
+
+	&__item {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0.5rem 1rem;
+		background-color: $dark-color-2;
+		cursor: pointer;
+		color: $light-color-1;
+
+		width: 90%;
+		margin: 1rem auto;
+		border-radius: 10px;
+
+		&.selected {
+			background-color: $dark-color-6;
+		}
+
+		&-image {
+			width: 20%;
+			padding: 0.2rem;
+
+			@include tablet {
+				width: 10%;
+			}
+
+			& > img {
+				width: 100%;
+				border-radius: 50px;
+			}
+		}
+
+		&-content {
+			display: flex;
+			flex-direction: column;
+			width: 76%;
+
+			@include tablet {
+				width: 86%;
+			}
+
+			&__group {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+
+				&-name {
+					width: 60%;
+					text-align: left;
+					font-size: 1rem;
+					font-weight: bold;
+
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+				}
+
+				&-time {
+					font-size: 0.7rem;
+					font-weight: lighter;
+					color: $light-color-3;
+					width: 40%;
+
+					text-align: right;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+				}
+
+				&-chat {
+					width: 80%;
+					text-align: left;
+					font-size: 0.9rem;
+					color: $light-color-2;
+
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+				}
+
+				&-noti {
+					font-size: 0.5rem;
+					background-color: $primary-color-3;
+					padding: 0.1rem 0.4rem;
+					border-radius: 7px;
+				}
+			}
+		}
+	}
+}
+
+.ant-drawer-body {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	width: 100%;
+
+	padding: 0 !important;
+	height: 100vh;
+}
+
+.ant-dropdown-menu {
+	background-color: $dark-color-4 !important;
+	border-radius: 5px !important;
+}
