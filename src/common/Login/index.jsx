@@ -42,6 +42,7 @@ const Login = () => {
 						status: "live",
 						dateOfBirth: "",
 						photoURL: user.photoURL,
+						email: user.email,
 					});
 					return notification.success({
 						message: "Đăng nhập thành công",

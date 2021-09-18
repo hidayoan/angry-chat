@@ -50,10 +50,11 @@ const Chatbar = ({ handleOpenNavbar }) => {
 		if (e.target.value === "") {
 			setListSearch([]);
 		} else {
+			console.log(listUser);
 			const temp = listUser.filter(
 				(userSearch) =>
-					(userSearch.email
-						.toLowerCase()
+					(userSearch?.email
+						?.toLowerCase()
 						.includes(e.target.value.toLowerCase()) ||
 						userSearch.displayName
 							.toLowerCase()
