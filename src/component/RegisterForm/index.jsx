@@ -43,6 +43,7 @@ const RegisterForm = () => {
 								status: "live",
 								dateOfBirth: values.date._d,
 								photoURL: user.photoURL,
+								email: user.email,
 							});
 							return notification.success({
 								message: "Đăng kí thành công",

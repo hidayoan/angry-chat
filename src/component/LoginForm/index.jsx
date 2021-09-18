@@ -37,6 +37,7 @@ const LoginForm = () => {
 						displayName: user.displayName,
 						status: "live",
 						photoURL: user.photoURL,
+						email: user.email,
 					});
 					return notification.success({
 						message: "Đăng nhập thành công",
