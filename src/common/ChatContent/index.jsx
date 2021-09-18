@@ -59,7 +59,7 @@ const ChatContent = ({
 					return <Loading text="Lỗi" />;
 				});
 		})();
-	}, [params]);
+	}, [params, user?.uid]);
 
 	// noti friend
 	const notiRef = firestore
