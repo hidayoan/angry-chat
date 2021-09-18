@@ -32,7 +32,7 @@ const Chatbar = ({ handleOpenNavbar }) => {
 		.doc(user.uid)
 		.collection("noti");
 	const queryNoti = notiRef;
-	const [noti, loadingNoti] = useCollectionData(queryNoti, { idField: "id" });
+	const [noti] = useCollectionData(queryNoti, { idField: "id" });
 
 	const changeOpenNavbar = () => {
 		if (handleOpenNavbar) {

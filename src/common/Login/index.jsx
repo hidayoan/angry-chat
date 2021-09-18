@@ -12,7 +12,7 @@ import "./style/index.scss";
 const Login = () => {
 	const listUserRef = firestore.collection("listUser");
 	const query = listUserRef.limit(25);
-	const [listUser, loading] = useCollectionData(query, { idField: "id" });
+	const [listUser] = useCollectionData(query, { idField: "id" });
 
 	const SignInWithGoogle = () => {
 		const provider = new firebase.auth.GoogleAuthProvider();

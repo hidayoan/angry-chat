@@ -5,7 +5,7 @@ import {
 	faUpload,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Badge, Button, Image, Input, Popover, Tooltip, Upload } from "antd";
+import { Badge, Button, Image, Input, Popover, Upload } from "antd";
 import { useState } from "react";
 import "./style/index.scss";
 import Picker from "emoji-picker-react";

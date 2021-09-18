@@ -165,7 +165,7 @@ const ChatContent = ({
 
 	const handleSeen = async () => {
 		try {
-			await noti.map((item) => {
+			await noti.forEach((item) => {
 				console.log("170", item);
 				if (item.uid === friendData.uid) {
 					console.log("172", friendData.uid);

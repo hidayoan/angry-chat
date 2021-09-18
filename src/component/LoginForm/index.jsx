@@ -1,6 +1,5 @@
 import { Button, Form, Input, notification, Spin } from "antd";
 import React from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { Link } from "react-router-dom";
 import { auth, firestore } from "../../firebaseConfig/firebase";
