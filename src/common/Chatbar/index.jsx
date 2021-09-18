@@ -130,72 +130,81 @@ const Chatbar = ({ handleOpenNavbar }) => {
 				{listChat?.map((chat) => {
 					const id = chat?.listUid.findIndex((value) => value === user.uid);
 
-					if (chat.type === "private") {
-						// const friend = listUser.find(userl => )
+					if (id > -1) {
+						if (chat.type === "private") {
+							// const friend = listUser.find(userl => )
 
-						let idFriend = 9;
+							let idFriend = 9;
 
-						if (id === 1) {
-							idFriend = 0;
-						} else {
-							idFriend = 1;
-						}
+							if (id === 1) {
+								idFriend = 0;
+							} else {
+								idFriend = 1;
+							}
 
-						const friend = listUser?.find(
-							(userl) => userl.uid === chat.listUid[idFriend]
-						);
+							const friend = listUser?.find(
+								(userl) => userl.uid === chat.listUid[idFriend]
+							);
 
-						console.log(chat.lastChat);
+							console.log(chat.lastChat);
 
-						return (
-							<Link
-								className={`chat-bar__item ${
-									!!params.idChat ? "selected" : ""
-								}`}
-								key={chat.id}
-								to={`/chat/${chat.id}`}
-								onClick={changeOpenNavbar}
-							>
-								<div className={`chat-bar__item-image`}>
-									<img
-										src={
-											friend.photoURL ||
-											"https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg"
-										}
-										alt=""
-									/>
-								</div>
-								<div className="chat-bar__item-content">
-									<div className="chat-bar__item-content__group">
-										<div className="chat-bar__item-content__group-name">
-											{friend?.displayName}
-										</div>
-
-										<div className="chat-bar__item-content__group-time">
-											{countTime(chat?.createAt?.seconds * 1000 || new Date())}
-										</div>
+							return (
+								<Link
+									className={`chat-bar__item ${
+										!!params.idChat ? "selected" : ""
+									}`}
+									key={chat.id}
+									to={`/chat/${chat.id}`}
+									onClick={changeOpenNavbar}
+								>
+									<div className={`chat-bar__item-image`}>
+										<img
+											src={
+												friend.photoURL ||
+												"https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg"
+											}
+											alt=""
+										/>
 									</div>
+									<div className="chat-bar__item-content">
+										<div className="chat-bar__item-content__group">
+											<div className="chat-bar__item-content__group-name">
+												{friend?.displayName}
+											</div>
 
-									<div className="chat-bar__item-content__group">
-										<div className="chat-bar__item-content__group-chat">
-											{chat?.lastChat?.uid === user?.uid ? (
-												<>you: {chat?.lastChat?.message}</>
+											<div className="chat-bar__item-content__group-time">
+												{countTime(
+													chat?.createAt?.seconds * 1000 || new Date()
+												)}
+											</div>
+										</div>
+
+										<div className="chat-bar__item-content__group">
+											<div className="chat-bar__item-content__group-chat">
+												{chat?.lastChat?.uid === user?.uid ? (
+													<>you: {chat?.lastChat?.message}</>
+												) : (
+													<>{chat?.lastChat?.message}</>
+												)}
+											</div>
+											{noti?.filter((item) => item.uid === friend.uid).length >
+											0 ? (
+												<div className="chat-bar__item-content__group-noti">
+													{
+														noti.filter((item) => item.uid === friend.uid)
+															.length
+													}
+												</div>
 											) : (
-												<>{chat?.lastChat?.message}</>
+												<></>
 											)}
 										</div>
-										{noti?.filter((item) => item.uid === friend.uid).length >
-										0 ? (
-											<div className="chat-bar__item-content__group-noti">
-												{noti.filter((item) => item.uid === friend.uid).length}
-											</div>
-										) : (
-											<></>
-										)}
 									</div>
-								</div>
-							</Link>
-						);
+								</Link>
+							);
+						} else {
+							return <></>;
+						}
 					} else {
 						return <></>;
 					}
