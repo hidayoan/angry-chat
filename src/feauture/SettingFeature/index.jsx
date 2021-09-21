@@ -1,9 +1,8 @@
 import { faUnlock, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Drawer, Menu } from "antd";
-import React from "react";
+import React, { useState } from "react";
 import { Link, Switch, Route, Redirect } from "react-router-dom";
-import { useState } from "react/cjs/react.development";
 import Navbar from "../../common/Navbar";
 import UserContent from "../../common/UserContent";
 import useWindowSize from "../../customHook/useWindowsSize";
