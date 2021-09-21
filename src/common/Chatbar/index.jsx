@@ -98,7 +98,7 @@ const Chatbar = ({ handleOpenNavbar }) => {
 
 	return (
 		<div className="chat-bar">
-			{user.email}
+			{/* {user.email} */}
 			<div className="chat-bar__search">
 				<Dropdown
 					overlay={() => {
