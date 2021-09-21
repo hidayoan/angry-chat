@@ -48,22 +48,26 @@
 		align-items: flex-start;
 
 		width: 100%;
-		// min-height: 90px !important;
+		min-height: 6rem !important;
 		margin-top: 0.5rem;
 
 		&--image {
 			// padding: 0.2rem !important;
-			max-height: 100% !important;
-			min-width: 10% !important;
-			max-width: 20%;
+
+			height: 6rem !important;
+			max-width: 10%;
 			background-color: $dark-color-2;
 			// padding: 0.5rem !important;
 
-			// border-radius: 5px;
+			border-radius: 5px;
 
 			display: flex;
 			align-items: center;
 			justify-content: center;
+
+			& > .ant-image > img {
+				object-fit: cover !important;
+			}
 		}
 
 		&.sent {

@@ -5,6 +5,7 @@ import "./App.scss";
 import Loading from "./component/Loading";
 import AuthFeature from "./feauture/AuthFeature";
 import ChatFeature from "./feauture/ChatFeature";
+import SettingFeature from "./feauture/SettingFeature";
 import { auth } from "./firebaseConfig/firebase";
 
 const App = () => {
@@ -19,14 +20,17 @@ const App = () => {
 			<Switch>
 				{!!user ? (
 					<>
-						<Redirect from="/auth" to="/chat"></Redirect>
+						<Redirect from="/" to="/chat"></Redirect>
 						<Route path="/chat">
 							<ChatFeature />
+						</Route>
+						<Route path="/setting">
+							<SettingFeature />
 						</Route>
 					</>
 				) : (
 					<>
-						<Redirect from="/chat" to="/auth"></Redirect>
+						<Redirect from="/" to="/auth"></Redirect>
 						<Route path="/auth">
 							<AuthFeature />
 						</Route>

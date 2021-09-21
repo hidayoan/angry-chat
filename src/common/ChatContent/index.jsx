@@ -10,6 +10,7 @@ import { auth, firestore } from "../../firebaseConfig/firebase";
 import "./style/index.scss";
 import firebase from "firebase/compat/app";
 import useWindowSize from "../../customHook/useWindowsSize";
+import { Avatar } from "antd";
 
 const ChatContent = ({
 	handleOpenOption,
@@ -87,9 +88,6 @@ const ChatContent = ({
 	const dummy = useRef(null);
 
 	useEffect(() => {
-		//console.log("new message");
-		//getNotificationData({ number: 1 });
-
 		dummy.current?.scrollIntoView({ behavior: "smooth" });
 	}, [chat]);
 
@@ -107,7 +105,6 @@ const ChatContent = ({
 	};
 
 	const hanleSendMessage = async (values) => {
-		console.log(values);
 		if (values.photo.length > 0) {
 			await chatRef.add({
 				text: values.text,
@@ -166,7 +163,6 @@ const ChatContent = ({
 	const handleSeen = async () => {
 		try {
 			await noti.forEach((item) => {
-				console.log("170", item);
 				if (item.uid === friendData.uid) {
 					console.log("172", friendData.uid);
 					firestore
@@ -191,7 +187,7 @@ const ChatContent = ({
 			<div className={`chat-content ${isOpenOption ? "open" : ""}`}>
 				<div className={`chat-content__header ${isOpenOption ? "open" : ""}`}>
 					<div className="chat-content__header-user">
-						{size < 768 ? (
+						{size <= 768 ? (
 							<div
 								className="chat-content__header-user__back"
 								onClick={changeOpenNavbar}
@@ -203,12 +199,12 @@ const ChatContent = ({
 						)}
 
 						<div className="chat-content__header-user__photo">
-							<img
+							<Avatar
 								src={
 									friendData?.photoURL ||
 									"https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg"
 								}
-								alt=""
+								size={30}
 							/>
 						</div>
 						<div className="chat-content__header-user__name">

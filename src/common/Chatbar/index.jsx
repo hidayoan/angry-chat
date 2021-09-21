@@ -1,4 +1,4 @@
-import { Dropdown, Input, Menu } from "antd";
+import { Avatar, Dropdown, Input, Menu } from "antd";
 import React, { useState } from "react";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { Link, useRouteMatch, useHistory } from "react-router-dom";
@@ -50,7 +50,6 @@ const Chatbar = ({ handleOpenNavbar }) => {
 		if (e.target.value === "") {
 			setListSearch([]);
 		} else {
-			console.log(listUser);
 			const temp = listUser.filter(
 				(userSearch) =>
 					(userSearch?.email
@@ -79,8 +78,6 @@ const Chatbar = ({ handleOpenNavbar }) => {
 			}
 		});
 
-		console.log(index);
-
 		if (!!index) {
 			history.push(`/chat/${index.id}`);
 		} else {
@@ -101,6 +98,7 @@ const Chatbar = ({ handleOpenNavbar }) => {
 
 	return (
 		<div className="chat-bar">
+			{user.email}
 			<div className="chat-bar__search">
 				<Dropdown
 					overlay={() => {
@@ -146,8 +144,6 @@ const Chatbar = ({ handleOpenNavbar }) => {
 								(userl) => userl.uid === chat.listUid[idFriend]
 							);
 
-							console.log(chat.lastChat);
-
 							return (
 								<Link
 									className={`chat-bar__item ${
@@ -158,12 +154,13 @@ const Chatbar = ({ handleOpenNavbar }) => {
 									onClick={changeOpenNavbar}
 								>
 									<div className={`chat-bar__item-image`}>
-										<img
+										<Avatar
 											src={
 												friend.photoURL ||
 												"https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg"
 											}
 											alt=""
+											size={32}
 										/>
 									</div>
 									<div className="chat-bar__item-content">

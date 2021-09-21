@@ -1,0 +1,56 @@
+@import "../../../asset/scss/all.scss";
+
+.setting-feature {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: left;
+
+	background-color: $dark-color-4;
+
+	padding: 0 !important;
+
+	&__menu {
+		display: flex;
+		flex-direction: column;
+		width: 20% !important;
+		height: 100vh;
+		background-color: $dark-color-5 !important;
+		padding-top: 1rem !important;
+
+		@include tabletAndDesktop {
+			width: 30% !important;
+		}
+
+		@include tablet {
+			width: 90% !important;
+		}
+
+		@include mobile {
+			width: 85% !important;
+		}
+
+		&--item {
+			width: 90% !important;
+			margin: 0rem auto 0.7rem !important;
+			border-radius: 5px;
+
+			background-color: $dark-color-4 !important;
+		}
+	}
+}
+
+.ant-drawer-body {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	width: 100%;
+
+	padding: 0 !important;
+	height: 100vh;
+}
+
+.ant-dropdown-menu {
+	background-color: $dark-color-4 !important;
+	border-radius: 5px !important;
+}

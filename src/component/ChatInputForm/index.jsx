@@ -5,21 +5,22 @@ import {
 	faUpload,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Badge, Button, Image, Input, Popover, Upload } from "antd";
-import { useState } from "react";
-import "./style/index.scss";
-import Picker from "emoji-picker-react";
-import { storage } from "../../firebaseConfig/firebase";
 import useEventListener from "@use-it/event-listener";
+import { Badge, Button, Image, Input, Popover, Upload } from "antd";
+import Picker from "emoji-picker-react";
+import { useState } from "react";
+import { useRouteMatch } from "react-router-dom";
+import { storage } from "../../firebaseConfig/firebase";
+import "./style/index.scss";
 
 const ENTER_KEYS = ["13", "Enter"];
 
 const ChatInputForm = ({ hanleSendMessage, handleSeen }) => {
 	const [listImage, setListImage] = useState([]);
 	const [message, setMessage] = useState("");
+	const { params } = useRouteMatch();
 
 	const onEmojiClick = (event, emojiObject) => {
-		console.log(emojiObject);
 		const temp = message + emojiObject.emoji;
 
 		setMessage(temp);
@@ -44,16 +45,14 @@ const ChatInputForm = ({ hanleSendMessage, handleSeen }) => {
 
 		await Promise.all(
 			listTemp.map(async (file) => {
-				await storage.ref(`images/${file.uid}`).put(file);
+				await storage.ref(`images/${params.idChat}/${file.uid}`).put(file);
 
 				const pathReference = await storage
-					.ref(`images/${file.uid}`)
+					.ref(`images/${params.idChat}/${file.uid}`)
 					.getDownloadURL();
 				listUrl = [...listUrl, pathReference];
 			})
 		);
-
-		await console.log(listUrl);
 
 		const messageData = await {
 			text: tempMsg,
@@ -138,7 +137,6 @@ const ChatInputForm = ({ hanleSendMessage, handleSeen }) => {
 						onChange={({ file, fileList }) => {
 							if (file.status !== "uploading") {
 								const temp = [...listImage];
-								console.log(temp, file);
 								temp.push(file);
 								setListImage(temp);
 							}
