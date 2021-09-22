@@ -17,6 +17,7 @@ const UserContent = ({ handleOpenNavbar }) => {
 	const [file, setFile] = useState(null);
 	const [avatar, setAvatar] = useState("");
 	const [username, setUsername] = useState("");
+	const [isChangeName, setIsChangeName] = useState(false);
 
 	useEffect(() => {
 		(async () => {
@@ -61,9 +62,16 @@ const UserContent = ({ handleOpenNavbar }) => {
 				photoURL: pathReference,
 			})
 			.then(() => {
-				return notification.success({
-					message: "Thay đổi hình nền thành công",
-				});
+				user
+					.updateProfile({
+						photoURL: pathReference,
+					})
+					.then(() => {
+						setFile(null);
+						return notification.success({
+							message: "Thay đổi hình nền thành công",
+						});
+					});
 			})
 			.catch((e) => {
 				console.log(e);
@@ -71,6 +79,42 @@ const UserContent = ({ handleOpenNavbar }) => {
 					message: "Thay đổi thất bại",
 				});
 			});
+	};
+
+	const onCancelChangeAvatar = () => {
+		setFile(null);
+		setAvatar(userData[0].photoURL);
+	};
+
+	const onChangeUsername = async () => {
+		auth.currentUser
+			.updateProfile({
+				displayName: username,
+			})
+			.then(() => {
+				firestore
+					.collection("listUser")
+					.doc(userData[0].id)
+					.update({
+						displayName: username,
+					})
+					.then(() => {
+						setIsChangeName(false);
+						return notification.success({
+							message: "Thay đổi tên thành công",
+						});
+					});
+			})
+			.catch((error) => {
+				console.log(error);
+				return notification.error({
+					message: "Thay đổi tên thất bại",
+				});
+			});
+	};
+
+	const onChangeInputValue = (e) => {
+		setUsername(e.target.value);
 	};
 
 	if (loading) return <Loading />;
@@ -111,7 +155,7 @@ const UserContent = ({ handleOpenNavbar }) => {
 					{!!file && (
 						<div className="user-content__body--avatar__btn">
 							<button onClick={onChangeAvatar}>Thay đổi</button>
-							<button>Hủy</button>
+							<button onClick={onCancelChangeAvatar}>Hủy</button>
 						</div>
 					)}
 				</div>
@@ -123,16 +167,41 @@ const UserContent = ({ handleOpenNavbar }) => {
 					<Input
 						className="user-content__body--username__input"
 						value={username}
-						disabled={true}
+						disabled={!isChangeName}
+						onChange={onChangeInputValue}
 						// bordered={false}
 					/>
-					{/* <div className="user-content__body--username__button">
-						<button type="primary">Xác nhận</button>
+				</div>
+				<div className="user-content__body--button">
+					{isChangeName ? (
+						<>
+							<button
+								className="user-content__body--button__submit"
+								onClick={onChangeUsername}
+							>
+								Xác nhận
+							</button>
 
-						<button type="primary" danger>
-							Hủy
-						</button>
-					</div> */}
+							<button
+								className="user-content__body--button__cancel"
+								onClick={() => {
+									setIsChangeName(false);
+									setUsername(userData[0]?.displayName);
+								}}
+							>
+								Hủy
+							</button>
+						</>
+					) : (
+						<>
+							<button
+								className="user-content__body--button__change"
+								onClick={() => setIsChangeName(true)}
+							>
+								Đổi
+							</button>
+						</>
+					)}
 				</div>
 			</div>
 		</div>
