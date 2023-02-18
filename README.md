@@ -1,6 +1,6 @@
 # App chat realtime with ReactJS and Firebase.
 
-##view my demo app add: [https://angrychat.netlify.app](https://angrychat.netlify.app/)
+##view my demo app at: [https://angrychat.netlify.app](https://angrychat.netlify.app/)
 
 ![image](https://user-images.githubusercontent.com/39639507/134831790-d81bed11-c802-407d-b515-642e997b9802.png)
 
